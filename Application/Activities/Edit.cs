@@ -17,7 +17,7 @@ namespace Application.Activities
             public Activity Activity { get; set; }
         }
         public class Handler : IRequestHandler<Command>
-        {
+        { 
             private readonly DataContext _context;
             private readonly IMapper _mapper;
 
@@ -32,7 +32,7 @@ namespace Application.Activities
                 
                 _mapper.Map(request.Activity, activity);
 
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync(cancellationToken);
 
                 return Unit.Value;
             }
